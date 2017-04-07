@@ -25,7 +25,7 @@
                                 <rect key="frame" x="164" y="318" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4YW-HQ-mYs"/>
+                                    <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchDown" id="lW3-4d-FT8"/>
                                 </connections>
                             </button>
                         </subviews>
