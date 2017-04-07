@@ -1,12 +1,13 @@
 //
 //  ViewController.swift
-//  Test
+//  Example
 //
-//  Created by Lasha Efremidze on 3/31/17.
+//  Created by Lasha Efremidze on 4/7/17.
 //  Copyright © 2017 efremidze. All rights reserved.
 //
 
 import UIKit
+import Haptic
 
 class ViewController: UIViewController {
     
@@ -17,3 +18,4 @@ class ViewController: UIViewController {
     }
     
 }
+
