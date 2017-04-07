@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B55173B1E983666009F7300"
-               BuildableName = "Haptic.framework"
-               BlueprintName = "Haptic"
-               ReferencedContainer = "container:Haptic.xcodeproj">
+               BlueprintIdentifier = "8BA8FAF71E98479800A3289A"
+               BuildableName = "Haptica.framework"
+               BlueprintName = "Haptica"
+               ReferencedContainer = "container:Haptica.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B55173B1E983666009F7300"
-            BuildableName = "Haptic.framework"
-            BlueprintName = "Haptic"
-            ReferencedContainer = "container:Haptic.xcodeproj">
+            BlueprintIdentifier = "8BA8FAF71E98479800A3289A"
+            BuildableName = "Haptica.framework"
+            BlueprintName = "Haptica"
+            ReferencedContainer = "container:Haptica.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B55173B1E983666009F7300"
-            BuildableName = "Haptic.framework"
-            BlueprintName = "Haptic"
-            ReferencedContainer = "container:Haptic.xcodeproj">
+            BlueprintIdentifier = "8BA8FAF71E98479800A3289A"
+            BuildableName = "Haptica.framework"
+            BlueprintName = "Haptica"
+            ReferencedContainer = "container:Haptica.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

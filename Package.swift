@@ -1,3 +1,3 @@
 import PackageDescription
 
-let package = Package(name: "Haptic")
+let package = Package(name: "Haptica")

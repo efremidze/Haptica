@@ -1,1 +1,1 @@
-# Haptic
+# Haptica

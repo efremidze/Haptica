@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haptic
+import Haptica
 
 class ViewController: UIViewController {
     
@@ -18,4 +18,3 @@ class ViewController: UIViewController {
     }
     
 }
-
