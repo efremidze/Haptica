@@ -1,4 +1,6 @@
-# Haptica
+<p align="center">
+    <img src="Images/logo.png" width="890" alt="Haptica" />
+</p>
 
 [![Language](https://img.shields.io/badge/Swift-3.1-orange.svg?style=flat)](https://swift.org)
 [![Version](https://img.shields.io/cocoapods/v/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
