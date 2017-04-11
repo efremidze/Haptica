@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
 [![Platform](https://img.shields.io/cocoapods/p/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
 
-**Haptica** is an easy haptic feedback library.
+**Haptica** is an easy haptic feedback generator.
 
 ```
 $ pod try Haptica
@@ -16,6 +16,48 @@ $ pod try Haptica
 - iOS 10.0+
 - Xcode 8.0+
 - Swift 3.0+
+
+### Haptic Feedback Requirements:
+- A device with a supported Taptic Engine (iPhone 7 and iPhone 7 Plus).
+- App is running in the foreground.
+- System Haptics setting is enabled.
+
+## Usage
+
+Generate using a haptic feedback type.
+
+```swift
+Haptic.impact(.light).generate()
+```
+
+### Feedback Types
+
+* **Impact**: ([UIImpactFeedbackStyle](https://developer.apple.com/reference/uikit/uiimpactfeedbackstyle))
+  * light
+  * medium
+  * heavy
+* **Notification**: ([UINotificationFeedbackType](https://developer.apple.com/reference/uikit/uinotificationfeedbacktype))
+  * success
+  * warning
+  * error
+* **Selection**
+
+### UIButton Extension
+
+Use Haptica with UIButtons by setting `isHaptic` to true and setting the haptic feedback type (`hapticType`) to the desired type (`.impact(.light)`).
+
+```swift
+button.isHaptic = true
+button.hapticType = .impact(.light)
+```
+
+#### Properties
+
+```swift
+var isHaptic: Bool // enables haptic feedback
+var hapticType: Haptic? // haptic feedback type
+var hapticControlEvents: UIControlEvents? // haptic feedback control events
+```
 
 ## Installation
 
