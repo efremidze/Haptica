@@ -9,6 +9,8 @@
 
 **Haptica** is an easy haptic feedback generator.
 
+<img src="https://raw.githubusercontent.com/efremidze/Haptica/Images/demo.png" width="320">
+
 ```
 $ pod try Haptica
 ```
