@@ -15,10 +15,8 @@ public enum Haptic {
     
     // trigger
     public func generate() {
-        guard #available(iOS 10, *) else {
-          return
-        }
-      
+        guard #available(iOS 10, *) else { return }
+        
         switch self {
         case .impact(let style):
             let generator = UIImpactFeedbackGenerator(style: style)
