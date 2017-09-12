@@ -69,7 +69,7 @@ var hapticControlEvents: UIControlEvents? // haptic feedback control events
 Add sound effects to Haptica using [Peep](https://github.com/efremidze/Peep).
 
 ```swift
-Peep.play(sound: HapticFeedback.impact)
+Peep.play(sound: KeyPress.tap)
 ```
 
 ## Installation
