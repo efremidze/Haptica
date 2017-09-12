@@ -64,6 +64,14 @@ var hapticType: Haptic? // haptic feedback type
 var hapticControlEvents: UIControlEvents? // haptic feedback control events
 ```
 
+### Sound Effects
+
+Add sound effects to Haptica using [Peep](https://github.com/efremidze/Peep).
+
+```swift
+Peep.play(sound: HapticFeedback.impact)
+```
+
 ## Installation
 
 ### CocoaPods
