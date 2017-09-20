@@ -45,7 +45,7 @@ extension Hapticable where Self: UIButton {
 
 extension UIButton: Hapticable {
     
-    public func trigger(_ sender: Any) {
+    @objc public func trigger(_ sender: Any) {
         hapticType?.generate()
     }
     

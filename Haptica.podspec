@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Haptica'
-  s.version          = '1.0.3'
+  s.version          = '2.0.0'
   s.summary          = 'Easy Haptic Feedback'
   s.homepage         = 'https://github.com/efremidze/Haptica'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
