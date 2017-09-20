@@ -20,7 +20,7 @@ $ pod try Haptica
 
 - iOS 9.0+
 - Xcode 8.0+
-- Swift 3.0+
+- Swift 4 (Haptica 2.x), Swift 3 (Haptica 1.x)
 
 ### Haptic Feedback Requirements:
 - A device with a supported Taptic Engine (iPhone 7 and iPhone 7 Plus).
