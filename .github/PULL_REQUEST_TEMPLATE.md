@@ -2,7 +2,7 @@
 
 ### Checklist
 - [ ] I've tested my changes.
-- [ ] I've read the [Contribution Guidelines](.github/CONTRIBUTING.md).
+- [ ] I've read the [Contribution Guidelines](CONTRIBUTING.md).
 - [ ] I've updated the documentation if necessary.
 
 ### Motivation and Context
