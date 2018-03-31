@@ -18,6 +18,9 @@
 		8BA8FB0F1E9847DD00A3289A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA8FB0D1E9847DD00A3289A /* Main.storyboard */; };
 		8BA8FB111E9847DD00A3289A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA8FB101E9847DD00A3289A /* Assets.xcassets */; };
 		8BA8FB141E9847DD00A3289A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA8FB121E9847DD00A3289A /* LaunchScreen.storyboard */; };
+		F4A237A5206F27A8001C0A9E /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = F4A237A2206F27A7001C0A9E /* CHANGELOG.md */; };
+		F4A237A6206F27A8001C0A9E /* Haptica.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F4A237A3206F27A7001C0A9E /* Haptica.podspec */; };
+		F4A237A7206F27A8001C0A9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4A237A4206F27A8001C0A9E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		8BA8FB101E9847DD00A3289A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BA8FB131E9847DD00A3289A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BA8FB151E9847DD00A3289A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4A237A2206F27A7001C0A9E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		F4A237A3206F27A7001C0A9E /* Haptica.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Haptica.podspec; sourceTree = "<group>"; };
+		F4A237A4206F27A8001C0A9E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 		8BA8FAEE1E98479800A3289A = {
 			isa = PBXGroup;
 			children = (
+				F4A237A2206F27A7001C0A9E /* CHANGELOG.md */,
+				F4A237A3206F27A7001C0A9E /* Haptica.podspec */,
+				F4A237A4206F27A8001C0A9E /* README.md */,
 				8BA8FAFA1E98479800A3289A /* Haptica */,
 				8BA8FB081E9847DD00A3289A /* Example */,
 				8BA8FAF91E98479800A3289A /* Products */,
@@ -181,7 +190,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = efremidze;
 				TargetAttributes = {
 					8BA8FAF71E98479800A3289A = {
@@ -220,6 +229,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A237A7206F27A8001C0A9E /* README.md in Resources */,
+				F4A237A5206F27A8001C0A9E /* CHANGELOG.md in Resources */,
+				F4A237A6206F27A8001C0A9E /* Haptica.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +311,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -306,6 +319,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -359,6 +373,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -366,6 +381,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
