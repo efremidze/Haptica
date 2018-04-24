@@ -87,6 +87,10 @@ To install with [Carthage](https://github.com/Carthage/Carthage), simply add thi
 github "efremidze/Haptica"
 ```
 
+## Mentions
+
+- [Fresh Swift](http://freshswift.net/post/-kj8ocn5j9lt_ljpffm4/)
+
 ## Communication
 
 - If you **found a bug**, open an issue.
