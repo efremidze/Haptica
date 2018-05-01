@@ -49,19 +49,22 @@ Haptic.impact(.light).generate()
 
 ### Feedback Types
 
-* **Impact**: ([UIImpactFeedbackStyle](https://developer.apple.com/reference/uikit/uiimpactfeedbackstyle))
+* **Impact**: ([UIImpactFeedbackStyle](https://developer.apple.com/reference/uikit/uiimpactfeedbackstyle)) - Use impact feedback generators to indicate that an impact has occurred. For example, you might trigger impact feedback when a user interface object collides with something or snaps into place.
   * light
   * medium
   * heavy
-* **Notification**: ([UINotificationFeedbackType](https://developer.apple.com/reference/uikit/uinotificationfeedbacktype))
+* **Notification**: ([UINotificationFeedbackType](https://developer.apple.com/reference/uikit/uinotificationfeedbacktype)) - Use notification feedback to communicate that a task or action has succeeded, failed, or produced a warning of some kind.
   * success
   * warning
   * error
-* **Selection**
+* **Selection** - Use selection feedback to communicate movement through a series of discrete values.
 
 ### UIButton Extension
 
-Use Haptica with UIButtons by setting `isHaptic` to true and setting the haptic feedback type (`hapticType`) to the desired type (`.impact(.light)`).
+To enable haptic feedback on buttons, set these properties:
+
+- `isHaptic` - enables haptic feedback
+- `hapticType` - haptic feedback type
 
 ```swift
 button.isHaptic = true
