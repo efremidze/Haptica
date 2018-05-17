@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Haptica  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Haptica  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Haptica Docs</a> (0% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Haptica Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Haptica  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/Haptic.html">Haptic</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIButton.html">UIButton</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Hapticable.html">Hapticable</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p align="center">
+    <img src="https://github.com/efremidze/Haptica/blob/master/Images/logo.png" width="890" alt="Haptica" />
+</p>
+
+<p align="center">
+    <a href="https://travis-ci.org/efremidze/Haptica" target="_blank">
+        <img alt="Build Status" src="https://travis-ci.org/efremidze/Haptica.svg?style=flat">
+    </a>
+    <a href="https://swift.org" target="_blank">
+        <img alt="Language" src="https://img.shields.io/badge/Swift-4-orange.svg?style=flat">
+    </a>
+    <a href="http://cocoapods.org/pods/Haptica" target="_blank">
+        <img alt="Version" src="https://img.shields.io/cocoapods/v/Haptica.svg?style=flat">
+    </a>
+    <a href="http://cocoapods.org/pods/Haptica" target="_blank">
+        <img alt="License" src="https://img.shields.io/cocoapods/l/Haptica.svg?style=flat">
+    </a>
+    <a href="http://cocoapods.org/pods/Haptica" target="_blank">
+        <img alt="Platform" src="https://img.shields.io/cocoapods/p/Haptica.svg?style=flat">
+    </a>
+    <a href="https://github.com/Carthage/Carthage" target="_blank">
+        <img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat">
+    </a>
+</p>
+
+<p><strong>Haptica</strong> is an easy haptic feedback generator.</p>
+<pre class="highlight plaintext"><code>$ pod try Haptica
+</code></pre>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 9.0+</li>
+<li>Xcode 8.0+</li>
+<li>Swift 4 (Haptica 2.x), Swift 3 (Haptica 1.x)</li>
+</ul>
+<h3 id='haptic-feedback-requirements' class='heading'>Haptic Feedback Requirements:</h3>
+
+<ul>
+<li>A device with a supported Taptic Engine (iPhone 7 and iPhone 7 Plus).</li>
+<li>App is running in the foreground.</li>
+<li>System Haptics setting is enabled.</li>
+</ul>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>Generate using a haptic feedback type.</p>
+<pre class="highlight swift"><code><span class="kt">Haptic</span><span class="o">.</span><span class="nf">impact</span><span class="p">(</span><span class="o">.</span><span class="n">light</span><span class="p">)</span><span class="o">.</span><span class="nf">generate</span><span class="p">()</span>
+</code></pre>
+<h3 id='feedback-types' class='heading'>Feedback Types</h3>
+<li><strong>Impact</strong>: (<a href="https://developer.apple.com/reference/uikit/uiimpactfeedbackstyle">UIImpactFeedbackStyle</a>) - Use impact feedback generators to indicate that an impact has occurred. For example, you might trigger impact feedback when a user interface object collides with something or snaps into place.
+
+<ul>
+<li>light</li>
+<li>medium</li>
+<li>heavy</li>
+</ul></li>
+<li><strong>Notification</strong>: (<a href="https://developer.apple.com/reference/uikit/uinotificationfeedbacktype">UINotificationFeedbackType</a>) - Use notification feedback to communicate that a task or action has succeeded, failed, or produced a warning of some kind.
+<li>success</li>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    warning
+
+</div>
+<li>error</li></li>
+<li><strong>Selection</strong> - Use selection feedback to communicate movement through a series of discrete values.</li>
+<h3 id='uibutton-extension' class='heading'>UIButton Extension</h3>
+
+<p>To enable haptic feedback on buttons, set these properties:</p>
+
+<ul>
+<li><code>isHaptic</code> - enables haptic feedback</li>
+<li><code>hapticType</code> - haptic feedback type</li>
+</ul>
+<pre class="highlight swift"><code><span class="n">button</span><span class="o">.</span><span class="n">isHaptic</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">button</span><span class="o">.</span><span class="n">hapticType</span> <span class="o">=</span> <span class="o">.</span><span class="nf">impact</span><span class="p">(</span><span class="o">.</span><span class="n">light</span><span class="p">)</span>
+</code></pre>
+<h4 id='properties' class='heading'>Properties</h4>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isHaptic</span><span class="p">:</span> <span class="kt">Bool</span> <span class="c1">// enables haptic feedback</span>
+<span class="k">var</span> <span class="nv">hapticType</span><span class="p">:</span> <span class="kt">Haptic</span><span class="p">?</span> <span class="c1">// haptic feedback type</span>
+<span class="k">var</span> <span class="nv">hapticControlEvents</span><span class="p">:</span> <span class="kt">UIControlEvents</span><span class="p">?</span> <span class="c1">// haptic feedback control events</span>
+</code></pre>
+<h3 id='sound-effects' class='heading'>Sound Effects</h3>
+
+<p>Add sound effects to Haptica using <a href="https://github.com/efremidze/Peep">Peep</a>.</p>
+<pre class="highlight swift"><code><span class="kt">Peep</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">sound</span><span class="p">:</span> <span class="kt">KeyPress</span><span class="o">.</span><span class="n">tap</span><span class="p">)</span>
+</code></pre>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>To install with <a href="http://cocoapods.org/">CocoaPods</a>, simply add this in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
+<span class="n">pod</span> <span class="s2">"Haptica"</span>
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>To install with <a href="https://github.com/Carthage/Carthage">Carthage</a>, simply add this in your <code>Cartfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"efremidze/Haptica"</span>
+</code></pre>
+<h2 id='communication' class='heading'>Communication</h2>
+
+<ul>
+<li>If you <strong>found a bug</strong>, open an issue.</li>
+<li>If you <strong>have a feature request</strong>, open an issue.</li>
+<li>If you <strong>want to contribute</strong>, submit a pull request.</li>
+</ul>
+<h2 id='mentions' class='heading'>Mentions</h2>
+
+<ul>
+<li><a href="http://freshswift.net/post/-kj8ocn5j9lt_ljpffm4/">Fresh Swift</a></li>
+</ul>
+<h2 id='license' class='heading'>License</h2>
+
+<p>Haptica is available under the MIT license. See the LICENSE file for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/efremidze/Haptica" target="_blank" rel="external">efremidze</a>. All rights reserved. (Last updated: 2018-05-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
