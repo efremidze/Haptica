@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://github.com/efremidze/Haptica/blob/master/Images/logo.png" width="890" alt="Haptica" />
-</p>
+![Haptica](https://raw.githubusercontent.com/efremidze/Haptica/master/Images/logo.png)
 
 <p align="center">
     <a href="https://travis-ci.org/efremidze/Haptica" target="_blank">
