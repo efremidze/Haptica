@@ -11,7 +11,7 @@ import UIKit
 private var hapticKey: Void?
 private var eventKey: Void?
 
-public protocol Hapticable {
+public protocol Hapticable: class {
     func trigger(_ sender: Any)
 }
 
