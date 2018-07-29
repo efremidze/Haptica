@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 2.0.3](https://github.com/efremidze/Haptica/releases/tag/2.0.3)
+Released on 2018-07-29
+
+- Bug fix
+
 ## [Version 2.0.2](https://github.com/efremidze/Haptica/releases/tag/2.0.2)
 Released on 2018-04-17
 
