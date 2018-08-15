@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 2.0.4](https://github.com/efremidze/Haptica/releases/tag/2.0.4)
+Released on 2018-08-15
+
+- Added addHaptic and removeHaptic to complement UIControl naming
+
 ## [Version 2.0.3](https://github.com/efremidze/Haptica/releases/tag/2.0.3)
 Released on 2018-07-29
 

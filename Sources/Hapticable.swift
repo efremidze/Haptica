@@ -15,7 +15,7 @@ public protocol Hapticable: class {
     func trigger(_ sender: Any)
 }
 
-extension Hapticable where Self: UIButton {
+extension Hapticable where Self: UIControl {
     
     public var isHaptic: Bool {
         get {
@@ -41,9 +41,17 @@ extension Hapticable where Self: UIButton {
         set { setAssociatedObject(&eventKey, newValue) }
     }
     
+    public func addHaptic(_ haptic: Haptic, for controlEvents: UIControlEvents) {
+        addTarget(self, action: #selector(trigger), for: controlEvents)
+    }
+    
+    public func removeHaptic(_ haptic: Haptic, for controlEvents: UIControlEvents) {
+        removeTarget(self, action: #selector(trigger), for: controlEvents)
+    }
+    
 }
 
-extension UIButton: Hapticable {
+extension UIControl: Hapticable {
     
     @objc public func trigger(_ sender: Any) {
         hapticType?.generate()

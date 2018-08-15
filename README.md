@@ -70,6 +70,16 @@ button.isHaptic = true
 button.hapticType = .impact(.light)
 ```
 
+or use these functions to set the haptic feedback type for control events:
+
+- `addHaptic(for:)` - add haptic feedback for control events
+- `removeHaptic(for:)` - remove haptic feedback for control events
+
+```swift
+button.addHaptic(.selection, for: .touchDown)
+button.removeHaptic(.selection, for: .touchDown)
+```
+
 #### Properties
 
 ```swift
