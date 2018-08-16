@@ -13,50 +13,43 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var selection: UIButton! {
         didSet {
-            selection.isHaptic = true
-            selection.hapticType = .selection
+            selection.addHaptic(.selection, forControlEvents: .touchDown)
         }
     }
     
     @IBOutlet weak var impactLight: UIButton! {
         didSet {
-            impactLight.isHaptic = true
-            impactLight.hapticType = .impact(.light)
+            impactLight.addHaptic(.impact(.light), forControlEvents: .touchDown)
         }
     }
 
     @IBOutlet weak var impactMedium: UIButton! {
         didSet {
-            impactMedium.isHaptic = true
-            impactMedium.hapticType = .impact(.medium)
+            impactMedium.addHaptic(.impact(.medium), forControlEvents: .touchDown)
         }
     }
 
     @IBOutlet weak var impactHeavy: UIButton! {
         didSet {
-            impactHeavy.isHaptic = true
-            impactHeavy.hapticType = .impact(.heavy)
+            impactHeavy.addHaptic(.impact(.heavy), forControlEvents: .touchDown)
         }
     }
 
     @IBOutlet weak var notificationSuccess: UIButton! {
         didSet {
-            notificationSuccess.isHaptic = true
-            notificationSuccess.hapticType = .notification(.success)
+            notificationSuccess.addHaptic(.notification(.success), forControlEvents: .touchDown)
         }
     }
 
     @IBOutlet weak var notificationWarning: UIButton! {
         didSet {
-            notificationWarning.isHaptic = true
-            notificationWarning.hapticType = .notification(.warning)
+            notificationWarning.addHaptic(.notification(.warning), forControlEvents: .touchDown)
         }
     }
 
     @IBOutlet weak var notificationError: UIButton! {
         didSet {
-            notificationError.isHaptic = true
-            notificationError.hapticType = .notification(.error)
+            notificationError.addHaptic(.notification(.error), forControlEvents: .touchDown)
         }
     }
     

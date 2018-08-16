@@ -72,12 +72,12 @@ button.hapticType = .impact(.light)
 
 or use these functions to set the haptic feedback type for control events:
 
-- `addHaptic(for:)` - add haptic feedback for control events
-- `removeHaptic(for:)` - remove haptic feedback for control events
+- `addHaptic()` - add haptic feedback for control events
+- `removeHaptic()` - remove haptic feedback for control events
 
 ```swift
-button.addHaptic(.selection, for: .touchDown)
-button.removeHaptic(.selection, for: .touchDown)
+button.addHaptic(.selection, forControlEvents: .touchDown)
+button.removeHaptic(forControlEvents: .touchDown)
 ```
 
 #### Functions/Properties
@@ -86,8 +86,8 @@ button.removeHaptic(.selection, for: .touchDown)
 var isHaptic: Bool // enables haptic feedback
 var hapticType: Haptic? // haptic feedback type
 var hapticControlEvents: UIControlEvents? // haptic feedback control events
-func addHaptic(_ haptic: Haptic, for controlEvents: UIControlEvents) {} // add haptic feedback for control events
-func removeHaptic(_ haptic: Haptic, for controlEvents: UIControlEvents) {} // remove haptic feedback for control events
+func addHaptic(_ haptic: Haptic, forControlEvents events: UIControlEvents) {} // add haptic feedback for control events
+func removeHaptic(forControlEvents events: UIControlEvents) {} // remove haptic feedback for control events
 ```
 
 ### Sound Effects
