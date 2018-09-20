@@ -85,9 +85,9 @@ button.removeHaptic(forControlEvents: .touchDown)
 ```swift
 var isHaptic: Bool // enables haptic feedback
 var hapticType: Haptic? // haptic feedback type
-var hapticControlEvents: UIControlEvents? // haptic feedback control events
-func addHaptic(_ haptic: Haptic, forControlEvents events: UIControlEvents) {} // add haptic feedback for control events
-func removeHaptic(forControlEvents events: UIControlEvents) {} // remove haptic feedback for control events
+var hapticControlEvents: UIControl.Event? // haptic feedback control events
+func addHaptic(_ haptic: Haptic, forControlEvents events: UIControl.Event) {} // add haptic feedback for control events
+func removeHaptic(forControlEvents events: UIControl.Event) {} // remove haptic feedback for control events
 ```
 
 ### Sound Effects

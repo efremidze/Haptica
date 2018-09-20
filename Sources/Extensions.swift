@@ -8,12 +8,12 @@
 
 import UIKit
 
-extension UIControlEvents: Hashable {
+extension UIControl.Event: Hashable {
     public var hashValue: Int {
         return Int(rawValue)
     }
 }
 
-func == (lhs: UIControlEvents, rhs: UIControlEvents) -> Bool {
+func == (lhs: UIControl.Event, rhs: UIControl.Event) -> Bool {
     return lhs.rawValue == rhs.rawValue
 }

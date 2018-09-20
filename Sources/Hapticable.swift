@@ -37,23 +37,23 @@ extension Hapticable where Self: UIControl {
         set { setAssociatedObject(&hapticKey, newValue) }
     }
     
-    public var hapticControlEvents: UIControlEvents? {
+    public var hapticControlEvents: UIControl.Event? {
         get { return getAssociatedObject(&eventKey) }
         set { setAssociatedObject(&eventKey, newValue) }
     }
     
-    private var hapticTargets: [UIControlEvents: HapticTarget] {
+    private var hapticTargets: [UIControl.Event: HapticTarget] {
         get { return getAssociatedObject(&targetsKey) ?? [:] }
         set { setAssociatedObject(&targetsKey, newValue) }
     }
     
-    public func addHaptic(_ haptic: Haptic, forControlEvents events: UIControlEvents) {
+    public func addHaptic(_ haptic: Haptic, forControlEvents events: UIControl.Event) {
         let hapticTarget = HapticTarget(haptic: haptic)
         hapticTargets[events] = hapticTarget
         addTarget(hapticTarget, action: #selector(hapticTarget.trigger), for: events)
     }
     
-    public func removeHaptic(forControlEvents events: UIControlEvents) {
+    public func removeHaptic(forControlEvents events: UIControl.Event) {
         guard let hapticTarget = hapticTargets[events] else { return }
         hapticTargets[events] = nil
         removeTarget(hapticTarget, action: #selector(hapticTarget.trigger), for: events)
