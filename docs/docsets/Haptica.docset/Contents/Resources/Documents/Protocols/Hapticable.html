@@ -14,7 +14,7 @@
     <a title="Hapticable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Haptica Docs</a> (0% documented)</p>
+        <p><a href="../index.html">Haptica Docs</a> (6% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -39,7 +39,10 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/UIButton.html">UIButton</a>
+                <a href="../Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIControlEvents.html">UIControlEvents</a>
               </li>
             </ul>
           </li>
@@ -59,7 +62,7 @@
             <h1>Hapticable</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Hapticable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Hapticable</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
@@ -72,9 +75,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Haptica10HapticableP7triggeryypF"></a>
+                    <a name="/s:7Haptica10HapticableP7triggeryyypF"></a>
                     <a name="//apple_ref/swift/Method/trigger(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Haptica10HapticableP7triggeryypF">trigger(_:)</a>
+                    <a class="token" href="#/s:7Haptica10HapticableP7triggeryyypF">trigger(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -103,9 +106,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Haptica10HapticablePAASo8UIButtonCRbzrlE8isHapticSbvp"></a>
+                    <a name="/s:7Haptica10HapticablePAASo9UIControlCRbzrlE8isHapticSbvp"></a>
                     <a name="//apple_ref/swift/Property/isHaptic" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Haptica10HapticablePAASo8UIButtonCRbzrlE8isHapticSbvp">isHaptic</a>
+                    <a class="token" href="#/s:7Haptica10HapticablePAASo9UIControlCRbzrlE8isHapticSbvp">isHaptic</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -133,9 +136,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Haptica10HapticablePAASo8UIButtonCRbzrlE10hapticTypeAA6HapticOSgvp"></a>
+                    <a name="/s:7Haptica10HapticablePAASo9UIControlCRbzrlE10hapticTypeAA6HapticOSgvp"></a>
                     <a name="//apple_ref/swift/Property/hapticType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Haptica10HapticablePAASo8UIButtonCRbzrlE10hapticTypeAA6HapticOSgvp">hapticType</a>
+                    <a class="token" href="#/s:7Haptica10HapticablePAASo9UIControlCRbzrlE10hapticTypeAA6HapticOSgvp">hapticType</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -163,9 +166,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Haptica10HapticablePAASo8UIButtonCRbzrlE19hapticControlEventsSC09UIControlF0VSgvp"></a>
+                    <a name="/s:7Haptica10HapticablePAASo9UIControlCRbzrlE19hapticControlEventsSo0cF0VSgvp"></a>
                     <a name="//apple_ref/swift/Property/hapticControlEvents" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Haptica10HapticablePAASo8UIButtonCRbzrlE19hapticControlEventsSC09UIControlF0VSgvp">hapticControlEvents</a>
+                    <a class="token" href="#/s:7Haptica10HapticablePAASo9UIControlCRbzrlE19hapticControlEventsSo0cF0VSgvp">hapticControlEvents</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -190,13 +193,73 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Haptica10HapticablePAASo9UIControlCRbzrlE9addHaptic_16forControlEventsyAA0E0O_So0cH0VtF"></a>
+                    <a name="//apple_ref/swift/Method/addHaptic(_:forControlEvents:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Haptica10HapticablePAASo9UIControlCRbzrlE9addHaptic_16forControlEventsyAA0E0O_So0cH0VtF">addHaptic(_:forControlEvents:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addHaptic</span><span class="p">(</span><span class="n">_</span> <span class="nv">haptic</span><span class="p">:</span> <span class="kt"><a href="../Enums/Haptic.html">Haptic</a></span><span class="p">,</span> <span class="n">forControlEvents</span> <span class="nv">events</span><span class="p">:</span> <span class="kt">UIControlEvents</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Haptica10HapticablePAASo9UIControlCRbzrlE12removeHaptic16forControlEventsySo0cH0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/removeHaptic(forControlEvents:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Haptica10HapticablePAASo9UIControlCRbzrlE12removeHaptic16forControlEventsySo0cH0V_tF">removeHaptic(forControlEvents:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeHaptic</span><span class="p">(</span><span class="n">forControlEvents</span> <span class="nv">events</span><span class="p">:</span> <span class="kt">UIControlEvents</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/efremidze/Haptica" target="_blank" rel="external">efremidze</a>. All rights reserved. (Last updated: 2018-05-17)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/efremidze/Haptica" target="_blank" rel="external">efremidze</a>. All rights reserved. (Last updated: 2018-09-20)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -10,14 +10,14 @@
     {
       "file": "/Users/home/Documents/Haptica/Sources/Haptic.swift",
       "line": 12,
-      "symbol": "Haptic.impact(_:)",
+      "symbol": "Haptic.impact",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Haptic.swift",
       "line": 13,
-      "symbol": "Haptic.notification(_:)",
+      "symbol": "Haptic.notification",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -44,57 +44,43 @@
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 15,
+      "line": 14,
       "symbol": "Hapticable",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 16,
+      "line": 15,
       "symbol": "Hapticable.trigger(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 21,
+      "line": 20,
       "symbol": "Hapticable.isHaptic",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 35,
+      "line": 34,
       "symbol": "Hapticable.hapticType",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 40,
+      "line": 39,
       "symbol": "Hapticable.hapticControlEvents",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 50,
-      "symbol": "Hapticable.addHaptic(_:forControlEvents:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 56,
-      "symbol": "Hapticable.removeHaptic(forControlEvents:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/home/Documents/Haptica/Sources/Hapticable.swift",
-      "line": 65,
-      "symbol": "UIControl.trigger(_:)",
+      "line": 48,
+      "symbol": "UIButton.trigger(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }

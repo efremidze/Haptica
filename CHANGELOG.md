@@ -1,5 +1,11 @@
 # Change log
 
+## [Version 2.1.1](https://github.com/efremidze/Haptica/releases/tag/2.1.1)
+Released on 2018-09-20
+
+- Updated minimum iOS deployment version to 10.0
+- Added Xcode 10 support
+
 ## [Version 2.0.5](https://github.com/efremidze/Haptica/releases/tag/2.0.5)
 Released on 2018-08-15
 
