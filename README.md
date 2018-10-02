@@ -4,9 +4,6 @@
     <a href="https://travis-ci.org/efremidze/Haptica" target="_blank">
         <img alt="Build Status" src="https://travis-ci.org/efremidze/Haptica.svg?style=flat">
     </a>
-    <a href="https://swift.org" target="_blank">
-        <img alt="Language" src="https://img.shields.io/badge/Swift-4-orange.svg?style=flat">
-    </a>
     <a href="http://cocoapods.org/pods/Haptica" target="_blank">
         <img alt="Version" src="https://img.shields.io/cocoapods/v/Haptica.svg?style=flat">
     </a>
@@ -29,7 +26,7 @@ $ pod try Haptica
 
 ## Requirements
 
-- iOS 9.0+
+- iOS 10.0+
 - Xcode 8.0+
 - Swift 4 (Haptica 2.x), Swift 3 (Haptica 1.x)
 
@@ -85,9 +82,9 @@ button.removeHaptic(forControlEvents: .touchDown)
 ```swift
 var isHaptic: Bool // enables haptic feedback
 var hapticType: Haptic? // haptic feedback type
-var hapticControlEvents: UIControlEvents? // haptic feedback control events
-func addHaptic(_ haptic: Haptic, forControlEvents events: UIControlEvents) {} // add haptic feedback for control events
-func removeHaptic(forControlEvents events: UIControlEvents) {} // remove haptic feedback for control events
+var hapticControlEvents: UIControl.Event? // haptic feedback control events
+func addHaptic(_ haptic: Haptic, forControlEvents events: UIControl.Event) {} // add haptic feedback for control events
+func removeHaptic(forControlEvents events: UIControl.Event) {} // remove haptic feedback for control events
 ```
 
 ### Sound Effects
