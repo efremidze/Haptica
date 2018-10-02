@@ -1,6 +1,6 @@
 # Change log
 
-## [Version 2.2.0](https://github.com/efremidze/Haptica/releases/tag/2.2.0)
+## [Version 2.2.1](https://github.com/efremidze/Haptica/releases/tag/2.2.1)
 Released on 2018-10-01
 
 - Swift 4.2 Support
