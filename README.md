@@ -4,9 +4,6 @@
     <a href="https://travis-ci.org/efremidze/Haptica" target="_blank">
         <img alt="Build Status" src="https://travis-ci.org/efremidze/Haptica.svg?style=flat">
     </a>
-    <a href="https://swift.org" target="_blank">
-        <img alt="Language" src="https://img.shields.io/badge/Swift-4-orange.svg?style=flat">
-    </a>
     <a href="http://cocoapods.org/pods/Haptica" target="_blank">
         <img alt="Version" src="https://img.shields.io/cocoapods/v/Haptica.svg?style=flat">
     </a>
