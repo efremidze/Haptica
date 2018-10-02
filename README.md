@@ -29,7 +29,7 @@ $ pod try Haptica
 
 ## Requirements
 
-- iOS 9.0+
+- iOS 10.0+
 - Xcode 8.0+
 - Swift 4 (Haptica 2.x), Swift 3 (Haptica 1.x)
 
