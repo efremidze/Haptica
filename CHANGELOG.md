@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 2.2.2](https://github.com/efremidze/Haptica/releases/tag/2.2.2)
+Released on 2018-12-05
+
+- Readded iOS 9 Support
+
 ## [Version 2.2.1](https://github.com/efremidze/Haptica/releases/tag/2.2.1)
 Released on 2018-10-01
 
