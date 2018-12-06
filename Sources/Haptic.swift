@@ -8,17 +8,31 @@
 
 import UIKit
 
-public enum HapticStyle: Int {
+public enum HapticFeedbackStyle: Int {
     case light, medium, heavy
 }
 
-public enum FeedbackType: Int {
+@available(iOS 10.0, *)
+extension HapticFeedbackStyle {
+    var value: UIImpactFeedbackGenerator.FeedbackStyle {
+        return UIImpactFeedbackGenerator.FeedbackStyle(rawValue: rawValue)!
+    }
+}
+
+public enum HapticFeedbackType: Int {
     case success, warning, error
 }
 
+@available(iOS 10.0, *)
+extension HapticFeedbackType {
+    var value: UINotificationFeedbackGenerator.FeedbackType {
+        return UINotificationFeedbackGenerator.FeedbackType(rawValue: rawValue)!
+    }
+}
+
 public enum Haptic {
-    case impact(HapticStyle)
-    case notification(FeedbackType)
+    case impact(HapticFeedbackStyle)
+    case notification(HapticFeedbackType)
     case selection
     
     // trigger
@@ -27,19 +41,13 @@ public enum Haptic {
         
         switch self {
         case .impact(let style):
-            guard let impactStyle = UIImpactFeedbackGenerator.FeedbackStyle.init(rawValue: style.rawValue) else {
-                return
-            }
-            let generator = UIImpactFeedbackGenerator(style: impactStyle)
+            let generator = UIImpactFeedbackGenerator(style: style.value)
             generator.prepare()
             generator.impactOccurred()
         case .notification(let type):
             let generator = UINotificationFeedbackGenerator()
             generator.prepare()
-            guard let feedbackType = UINotificationFeedbackGenerator.FeedbackType.init(rawValue: type.rawValue) else {
-                return
-            }
-            generator.notificationOccurred(feedbackType)
+            generator.notificationOccurred(type.value)
         case .selection:
             let generator = UISelectionFeedbackGenerator()
             generator.prepare()
