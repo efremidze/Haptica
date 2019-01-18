@@ -64,12 +64,12 @@ Haptic.play("..oO-Oo..", delay: 0.1)
 ```
 
 * **Pattern Symbols**
-* `O` - heavy impact
-* `o` - medium impact
-* `.` - light impact
-* `-` - wait 0.1 second
+  * `O` - heavy impact
+  * `o` - medium impact
+  * `.` - light impact
+  * `-` - wait 0.1 second
 
-or play a symphony of notes:
+Or play a symphony of notes:
 
 ```swift
 Haptic.play([.haptic(.impact(.light)), .haptic(.impact(.heavy)), .wait(0.1), .haptic(.impact(.heavy)), .haptic(.impact(.light))])
