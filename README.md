@@ -63,7 +63,7 @@ Play a custom vibration pattern:
 Haptic.play("..oO-Oo..", delay: 0.1)
 ```
 
-**Pattern Symbols** - Use pattern symbols to represents custom vibrations.
+Use pattern symbols to represents custom vibrations.
 - `O` - heavy impact
 - `o` - medium impact
 - `.` - light impact
