@@ -17,3 +17,11 @@ extension UIControl.Event: Hashable {
 func == (lhs: UIControl.Event, rhs: UIControl.Event) -> Bool {
     return lhs.rawValue == rhs.rawValue
 }
+
+extension OperationQueue {
+    static var serial: OperationQueue {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }
+}

@@ -53,4 +53,8 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func playVibrationPattern(_ sender: UIButton) {
+        Haptic.play("..oO-Oo..", delay: 0.1)
+    }
+    
 }

@@ -55,6 +55,26 @@ Haptic.impact(.light).generate()
   * error
 * **Selection** - Use selection feedback to communicate movement through a series of discrete values.
 
+### Vibration Patterns
+
+Play a custom vibration pattern:
+
+```swift
+Haptic.play("..oO-Oo..", delay: 0.1)
+```
+
+* **Pattern Symbols**
+* `O` - heavy impact
+* `o` - medium impact
+* `.` - light impact
+* `-` - wait 0.1 second
+
+or play a symphony of notes:
+
+```swift
+Haptic.play([.haptic(.impact(.light)), .haptic(.impact(.heavy)), .wait(0.1), .haptic(.impact(.heavy)), .haptic(.impact(.light))])
+```
+
 ### UIButton Extension
 
 To enable haptic feedback on buttons, set these properties:
