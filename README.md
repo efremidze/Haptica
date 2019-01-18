@@ -63,11 +63,11 @@ Play a custom vibration pattern:
 Haptic.play("..oO-Oo..", delay: 0.1)
 ```
 
-* **Pattern Symbols** - Use pattern symbols to represents custom vibrations.
-  * `O` - heavy impact
-  * `o` - medium impact
-  * `.` - light impact
-  * `-` - wait 0.1 second
+**Pattern Symbols** - Use pattern symbols to represents custom vibrations.
+- `O` - heavy impact
+- `o` - medium impact
+- `.` - light impact
+- `-` - wait 0.1 second
 
 Or play a symphony of notes:
 
