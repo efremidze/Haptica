@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 3.0.0](https://github.com/efremidze/Haptica/releases/tag/3.0.0)
+Released on 2019-04-23
+
+- Swift 5.0 support
+
 ## [Version 2.2.3](https://github.com/efremidze/Haptica/releases/tag/2.2.3)
 Released on 2019-01-17
 
