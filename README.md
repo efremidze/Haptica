@@ -1,22 +1,11 @@
 ![Haptica](https://raw.githubusercontent.com/efremidze/Haptica/master/Images/logo.png)
 
-<p align="center">
-    <a href="https://travis-ci.org/efremidze/Haptica" target="_blank">
-        <img alt="Build Status" src="https://travis-ci.org/efremidze/Haptica.svg?style=flat">
-    </a>
-    <a href="http://cocoapods.org/pods/Haptica" target="_blank">
-        <img alt="Version" src="https://img.shields.io/cocoapods/v/Haptica.svg?style=flat">
-    </a>
-    <a href="http://cocoapods.org/pods/Haptica" target="_blank">
-        <img alt="License" src="https://img.shields.io/cocoapods/l/Haptica.svg?style=flat">
-    </a>
-    <a href="http://cocoapods.org/pods/Haptica" target="_blank">
-        <img alt="Platform" src="https://img.shields.io/cocoapods/p/Haptica.svg?style=flat">
-    </a>
-    <a href="https://github.com/Carthage/Carthage" target="_blank">
-        <img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat">
-    </a>
-</p>
+[![Build Status](https://travis-ci.org/efremidze/Haptica.svg?branch=master)](https://travis-ci.org/efremidze/Haptica)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Language](https://img.shields.io/badge/Swift-5-orange.svg?style=flat)](https://swift.org)
+[![Version](https://img.shields.io/cocoapods/v/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
+[![License](https://img.shields.io/cocoapods/l/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
+[![Platform](https://img.shields.io/cocoapods/p/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
 
 **Haptica** is an easy haptic feedback generator.
 
