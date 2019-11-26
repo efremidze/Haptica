@@ -34,6 +34,22 @@ class ViewController: UIViewController {
             impactHeavy.addHaptic(.impact(.heavy), forControlEvents: .touchDown)
         }
     }
+    
+    @IBOutlet weak var impactSoft: UIButton! {
+        didSet {
+            if #available(iOS 13.0, *) {
+                impactSoft.addHaptic(.impact(.soft), forControlEvents: .touchDown)
+            }
+        }
+    }
+
+    @IBOutlet weak var impactRigid: UIButton! {
+        didSet {
+            if #available(iOS 13.0, *) {
+                impactRigid.addHaptic(.impact(.rigid), forControlEvents: .touchDown)
+            }
+        }
+    }
 
     @IBOutlet weak var notificationSuccess: UIButton! {
         didSet {
