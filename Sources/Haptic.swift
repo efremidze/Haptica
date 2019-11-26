@@ -10,6 +10,9 @@ import UIKit
 
 public enum HapticFeedbackStyle: Int {
     case light, medium, heavy
+    
+    @available(iOS 13.0, *)
+    case soft, rigid
 }
 
 @available(iOS 10.0, *)
