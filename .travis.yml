@@ -3,4 +3,3 @@ osx_image: xcode10.2
 script:
 - xcodebuild clean -project Haptica.xcodeproj -scheme Haptica -destination "platform=iOS Simulator,name=iPhone X,OS=12.2" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
 - xcodebuild clean -project Haptica.xcodeproj -scheme Example -destination "platform=iOS Simulator,name=iPhone X,OS=12.2" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
-- pod spec lint

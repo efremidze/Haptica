@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 3.0.2](https://github.com/efremidze/Haptica/releases/tag/3.0.2)
+Released on 2019-12-04
+
+- iOS 13 Support
+
 ## [Version 3.0.1](https://github.com/efremidze/Haptica/releases/tag/3.0.1)
 Released on 2019-10-05
 
