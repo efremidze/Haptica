@@ -41,6 +41,18 @@ public enum Note {
             self = .haptic(.impact(.medium))
         case ".":
             self = .haptic(.impact(.light))
+        case "X":
+            if #available(iOS 13.0, *) {
+                self = .haptic(.impact(.rigid))
+            } else {
+                self = .haptic(.impact(.heavy))
+            }
+        case "x":
+            if #available(iOS 13.0, *) {
+                self = .haptic(.impact(.soft))
+            } else {
+                self = .haptic(.impact(.light))
+            }
         case "-":
             self = .wait(delay)
         default:

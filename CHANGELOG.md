@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 3.0.3](https://github.com/efremidze/Haptica/releases/tag/3.0.3)
+Released on 2021-10-15
+
+- Added rigid and soft haptic feedback to patterns
+
 ## [Version 3.0.2](https://github.com/efremidze/Haptica/releases/tag/3.0.2)
 Released on 2019-12-04
 
