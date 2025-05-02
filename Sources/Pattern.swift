@@ -6,13 +6,114 @@
 //  Copyright © 2019 efremidze. All rights reserved.
 //
 
-import Foundation
+import CoreHaptics
+
+// MARK: - Haptic Pattern API
 
 public extension Haptic {
+    /// Generates a sequence of haptic events from a symbolic string pattern.
+    ///
+    /// - Parameters:
+    ///   - pattern: A string representing haptic feedback (e.g., `"..oO-Oo.."`)
+    ///   - delay: The delay used between pattern symbols like `-`
+    ///   - legacy: Whether to use legacy (UIKit) haptics instead of Core Haptics
+    static func play(_ pattern: String, delay: TimeInterval, legacy: Bool = false) {
+        if legacy {
+            let notes = pattern.compactMap { LegacyNote($0, delay: delay) }
+            play(notes)
+        } else {
+            let notes = pattern.compactMap { Note($0, delay: delay) }
+            play(notes)
+        }
+    }
+}
+
+// MARK: - Core Haptics Engine
+
+public extension Haptic {
+    /// The shared Core Haptics engine instance used by the framework.
+    static var engine: CHHapticEngine?
+    
+    /// Prepares and starts the Core Haptics engine.
+    /// Sets up handlers to automatically restart the engine on reset or failure.
+    static func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+            
+            engine?.resetHandler = {
+                do {
+                    try engine?.start()
+                } catch {
+                    HapticaLog.error("Failed to restart engine: \(error)")
+                }
+            }
+        } catch {
+            HapticaLog.error("Failed to create haptic engine: \(error)")
+        }
+    }
+    
+    /// Plays a sequence of haptic notes using Core Haptics.
+    ///
+    /// - Parameter notes: An array of `Note` values that represent haptic and wait commands.
+    static func play(_ notes: [Note]) {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        if engine == nil {
+            prepareHaptics()
+        }
+        
+        guard let engine else { return }
+        
+        do {
+            var events = [CHHapticEvent]()
+            var currentTime: TimeInterval = 0
+            
+            for note in notes {
+                switch note {
+                case .haptic(let intensity, let sharpness):
+                    // Create and add haptic event
+                    let event = CHHapticEvent(
+                        eventType: .hapticTransient,
+                        parameters: [
+                            CHHapticEventParameter(parameterID: .hapticIntensity, value: intensity),
+                            CHHapticEventParameter(parameterID: .hapticSharpness, value: sharpness)
+                        ],
+                        relativeTime: currentTime
+                    )
+                    events.append(event)
+                    currentTime += 0.1 // Default duration for transient events
+                    
+                case .wait(let interval):
+                    currentTime += interval
+                }
+            }
+            
+            // Create pattern from events
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            
+            // Create player and play pattern
+            let player = try engine.makePlayer(with: pattern)
+            try player.start(atTime: 0)
+        } catch {
+            HapticaLog.error("Failed to play pattern: \(error)")
+        }
+    }
+}
+
+// MARK: - Legacy Engine
+
+public extension Haptic {
+    /// A serial queue used to sequence legacy haptic operations.
     static let queue: OperationQueue = .serial
     
-    static func play(_ notes: [Note]) {
-        guard #available(iOS 10, *), queue.operations.isEmpty else { return }
+    /// Plays a series of `LegacyNote` values using UIKit-based feedback generators.
+    ///
+    /// - Parameter notes: An array of legacy haptic notes.
+    static func play(_ notes: [LegacyNote]) {
+        guard queue.operations.isEmpty else { return }
         
         for note in notes {
             let operation = note.operation
@@ -22,44 +123,129 @@ public extension Haptic {
             queue.addOperation(operation)
         }
     }
+}
+
+// MARK: - Haptic File API
+
+@available(iOS 16.0, *)
+public extension Haptic {
+    /// Play a Core Haptics pattern from an AHAP file.
+    ///
+    /// - Parameters:
+    ///   - url: The file URL of the haptic pattern (e.g. bundled AHAP file).
+    static func playPattern(from url: URL) {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        if engine == nil {
+            prepareHaptics()
+        }
+        
+        guard let engine else { return }
+
+        do {
+            let pattern = try CHHapticPattern(contentsOf: url)
+            let player = try engine.makePlayer(with: pattern)
+            try player.start(atTime: 0)
+        } catch {
+            HapticaLog.error("Failed to play haptic pattern from file: \(error)")
+        }
+    }
     
-    static func play(_ pattern: String, delay: TimeInterval) {
-        let notes = pattern.compactMap { Note($0, delay: delay) }
-        play(notes)
+    /// Play a Core Haptics pattern from a JSON-based `.ahap` file included in the app bundle.
+    ///
+    /// - Parameters:
+    ///   - named: The name of the haptic pattern file without extension.
+    ///   - withExtension: The file extension, typically "ahap". Must contain valid AHAP JSON structure.
+    ///
+    /// The file must follow Apple's AHAP format. See: https://developer.apple.com/documentation/corehaptics/creating-custom-haptic-patterns
+    static func playPattern(named: String, withExtension ext: String = "ahap") {
+        guard let url = Bundle.main.url(forResource: named, withExtension: ext) else {
+            return HapticaLog.error("Failed to locate haptic pattern file named \(named).\(ext)")
+        }
+        playPattern(from: url)
     }
 }
 
+// MARK: - Notes
+
+/// A note in a Core Haptics pattern, representing either a haptic feedback or a wait.
+///
+/// `Note` is constructed from symbolic characters to support pattern string parsing.
 public enum Note {
-    case haptic(Haptic)
+    case haptic(Float, Float) // intensity, sharpness
     case wait(TimeInterval)
     
+    /// Initializes a `Note` from a pattern character and delay.
+    ///
+    /// - Parameters:
+    ///   - char: A character representing a feedback type.
+    ///   - delay: The duration to wait for wait notes (e.g. `-`).
     init?(_ char: Character, delay: TimeInterval) {
         switch String(char) {
         case "O":
-            self = .haptic(.impact(.heavy))
+            self = .haptic(1.0, 0.7) // Heavy impact - high intensity, medium-high sharpness
         case "o":
-            self = .haptic(.impact(.medium))
+            self = .haptic(0.7, 0.5) // Medium impact - medium intensity, medium sharpness
         case ".":
-            self = .haptic(.impact(.light))
+            self = .haptic(0.4, 0.4) // Light impact - low intensity, medium-low sharpness
         case "X":
-            if #available(iOS 13.0, *) {
-                self = .haptic(.impact(.rigid))
-            } else {
-                self = .haptic(.impact(.heavy))
-            }
+            self = .haptic(0.8, 0.9) // Rigid impact - high-medium intensity, high sharpness
         case "x":
-            if #available(iOS 13.0, *) {
-                self = .haptic(.impact(.soft))
-            } else {
-                self = .haptic(.impact(.light))
-            }
+            self = .haptic(0.4, 0.2) // Soft impact - low intensity, low sharpness
         case "-":
             self = .wait(delay)
         default:
             return nil
         }
     }
+}
+
+public extension Haptic {
+    var hapticNote: Note? {
+        switch self {
+        case .start:
+            return .haptic(0.6, 0.6)
+        case .stop:
+            return .haptic(0.9, 0.8)
+        case .increase:
+            return .haptic(0.5, 0.4)
+        case .decrease:
+            return .haptic(0.3, 0.3)
+        case .success:
+            return .haptic(1.0, 0.7)
+        case .failure:
+            return .haptic(0.9, 0.5)
+        case .warning:
+            return .haptic(0.9, 1.0)
+        default:
+            return nil
+        }
+    }
+}
+
+/// A note in the legacy haptic pattern system, using UIKit feedback types.
+public enum LegacyNote {
+    case haptic(Haptic)
+    case wait(TimeInterval)
     
+    /// Initializes a `LegacyNote` from a pattern character and delay.
+    ///
+    /// - Parameters:
+    ///   - char: A character representing a feedback type.
+    ///   - delay: The duration to wait for wait notes (e.g. `-`).
+    init?(_ char: Character, delay: TimeInterval) {
+        switch char {
+        case "O": self = .haptic(.impact(.heavy))
+        case "o": self = .haptic(.impact(.medium))
+        case ".": self = .haptic(.impact(.light))
+        case "X": self = .haptic(.impact(.rigid))
+        case "x": self = .haptic(.impact(.soft))
+        case "-": self = .wait(delay)
+        default: return nil
+        }
+    }
+    
+    /// Converts the `LegacyNote` into a queued operation.
     var operation: Operation {
         switch self {
         case .haptic(let haptic):
@@ -70,7 +256,10 @@ public enum Note {
     }
 }
 
-class HapticOperation: Operation {
+// MARK: - Operation Wrappers
+
+/// An `Operation` that triggers a UIKit-based haptic feedback when executed.
+class HapticOperation: Operation, @unchecked Sendable {
     let haptic: Haptic
     init(_ haptic: Haptic) {
         self.haptic = haptic
@@ -81,7 +270,9 @@ class HapticOperation: Operation {
         }
     }
 }
-class WaitOperation: Operation {
+
+/// An `Operation` that waits (sleeps) for a specified time when executed.
+class WaitOperation: Operation, @unchecked Sendable {
     let duration: TimeInterval
     init(_ duration: TimeInterval) {
         self.duration = duration

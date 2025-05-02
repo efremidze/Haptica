@@ -7,26 +7,36 @@
 [![License](https://img.shields.io/cocoapods/l/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
 [![Platform](https://img.shields.io/cocoapods/p/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
 
-**Haptica** is an easy haptic feedback generator.
+# Haptica
 
-```
+**Haptica** is a simple and expressive haptic feedback generator for iOS.
+
+```bash
 $ pod try Haptica
 ```
 
-## Requirements
+---
 
-- iOS 9.0+
-- Xcode 8.0+
-- Swift 5 (Haptica 3.x), Swift 4 (Haptica 2.x), Swift 3 (Haptica 1.x)
+## 📱 Requirements
 
-### Haptic Feedback Requirements:
-- A device with a supported Taptic Engine.
-- App is running in the foreground.
-- System Haptics setting is enabled.
+| Haptica Version | iOS | Swift | Xcode |
+|-----------------|-----|-------|--------|
+| 4.x             | 13+ | 5.x   | 11+     |
+| 3.x             | 9+  | 5.x   | 8+      |
+| 2.x             | 9+  | 4.x   | 8+      |
+| 1.x             | 9+  | 3.x   | 8+      |
 
-## Usage
+### Haptic Feedback Requirements
 
-Generate using a haptic feedback type.
+- Device with a supported Taptic Engine  
+- App running in the foreground  
+- System Haptics setting enabled  
+
+---
+
+## 🚀 Usage
+
+Trigger a haptic feedback with a single line:
 
 ```swift
 Haptic.impact(.light).generate()
@@ -34,103 +44,155 @@ Haptic.impact(.light).generate()
 
 ### Feedback Types
 
-* **Impact**: ([UIImpactFeedbackStyle](https://developer.apple.com/reference/uikit/uiimpactfeedbackstyle)) - Use impact feedback generators to indicate that an impact has occurred. For example, you might trigger impact feedback when a user interface object collides with something or snaps into place.
-  * light
-  * medium
-  * heavy
-* **Notification**: ([UINotificationFeedbackType](https://developer.apple.com/reference/uikit/uinotificationfeedbacktype)) - Use notification feedback to communicate that a task or action has succeeded, failed, or produced a warning of some kind.
-  * success
-  * warning
-  * error
-* **Selection** - Use selection feedback to communicate movement through a series of discrete values.
+- **Impact** (`.light`, `.medium`, `.heavy`, `.soft`, `.rigid`)  
+  Use to indicate collision or snap-to-position.
+- **Notification** (`.success`, `.warning`, `.error`)  
+  Use to communicate task results.
+- **Selection**  
+  Use for navigation through discrete values.
 
-### Vibration Patterns
+### Semantic Types (New)
 
-Play a custom vibration pattern:
+Use new expressive variants for common interactions:
+
+```swift
+Haptic.success.generate()
+Haptic.warning.generate()
+Haptic.start.generate()
+Haptic.stop.generate()
+Haptic.increase.generate()
+Haptic.decrease.generate()
+```
+
+These semantic styles internally map to appropriate UIKit or Core Haptics-based effects.
+
+### Custom Vibration Patterns
 
 ```swift
 Haptic.play("..oO-Oo..", delay: 0.1)
 ```
 
-Use pattern symbols to represent custom vibrations.
-- `O` - heavy impact
-- `o` - medium impact
-- `.` - light impact
-- `X` - rigid impact
-- `x` - soft impact
-- `-` - wait 0.1 second
+| Symbol | Feedback Type   |
+|--------|-----------------|
+| `.`    | Light impact    |
+| `o`    | Medium impact   |
+| `O`    | Heavy impact    |
+| `x`    | Soft impact     |
+| `X`    | Rigid impact    |
+| `-`    | 0.1s pause      |
 
-Or play a symphony of notes:
+Or use structured notes:
 
 ```swift
-Haptic.play([.haptic(.impact(.light)), .haptic(.impact(.heavy)), .wait(0.1), .haptic(.impact(.heavy)), .haptic(.impact(.light))])
+Haptic.play([
+    .haptic(.impact(.light)),
+    .haptic(.impact(.heavy)),
+    .wait(0.1),
+    .haptic(.impact(.heavy)),
+    .haptic(.impact(.light))
+])
 ```
 
-### UIButton Extension
+### 🔧 Core Haptics Support
 
-To enable haptic feedback on buttons, set these properties:
+Haptica uses **Core Haptics** by default when available. To use the legacy API:
 
-- `isHaptic` - enables haptic feedback
-- `hapticType` - haptic feedback type
+```swift
+Haptic.play(notes, legacy: true)
+```
+
+### 📂 Play from Pattern File (New) - iOS 16+
+
+Play a Core Haptics pattern from a bundled `.ahap` file:
+
+```swift
+Haptic.playPattern(named: "Feedback")
+```
+
+Make sure the file is included in your app bundle and contains a valid haptic pattern.
+
+---
+
+## 🧹 UIButton Extension
+
+Enable haptics for buttons easily:
 
 ```swift
 button.isHaptic = true
 button.hapticType = .impact(.light)
 ```
 
-or use these functions to set the haptic feedback type for control events:
-
-- `addHaptic()` - add haptic feedback for control events
-- `removeHaptic()` - remove haptic feedback for control events
+Add or remove haptic feedback on control events:
 
 ```swift
 button.addHaptic(.selection, forControlEvents: .touchDown)
 button.removeHaptic(forControlEvents: .touchDown)
 ```
 
-#### Functions/Properties
+**API Summary:**
 
 ```swift
-var isHaptic: Bool // enables haptic feedback
-var hapticType: Haptic? // haptic feedback type
-var hapticControlEvents: UIControl.Event? // haptic feedback control events
-func addHaptic(_ haptic: Haptic, forControlEvents events: UIControl.Event) {} // add haptic feedback for control events
-func removeHaptic(forControlEvents events: UIControl.Event) {} // remove haptic feedback for control events
+var isHaptic: Bool
+var hapticType: Haptic?
+var hapticControlEvents: UIControl.Event?
+
+func addHaptic(_ haptic: Haptic, forControlEvents events: UIControl.Event)
+func removeHaptic(forControlEvents events: UIControl.Event)
 ```
 
-### Sound Effects
+---
 
-Add sound effects to Haptica using [Peep](https://github.com/efremidze/Peep).
+## 🔊 Sound Effects
+
+Integrate sound feedback with [Peep](https://github.com/efremidze/Peep):
 
 ```swift
 Peep.play(sound: KeyPress.tap)
 ```
 
-## Installation
+---
+
+## 📦 Installation
+
+### Swift Package Manager
+
+```swift
+// For iOS 13+
+.package(url: "https://github.com/efremidze/Haptica.git", from: "4.0.0")
+
+// For iOS 9
+.package(url: "https://github.com/efremidze/Haptica.git", from: "3.0.0")
+```
 
 ### CocoaPods
-To install with [CocoaPods](http://cocoapods.org/), simply add this in your `Podfile`:
+
 ```ruby
 use_frameworks!
 pod "Haptica"
 ```
 
 ### Carthage
-To install with [Carthage](https://github.com/Carthage/Carthage), simply add this in your `Cartfile`:
+
 ```ruby
 github "efremidze/Haptica"
 ```
 
-## Communication
+---
 
-- If you **found a bug**, open an issue.
-- If you **have a feature request**, open an issue.
-- If you **want to contribute**, submit a pull request.
+## 💬 Communication
 
-## Mentions
+- Found a bug? → [Open an issue](https://github.com/efremidze/Haptica/issues)
+- Have a feature request? → [Open an issue](https://github.com/efremidze/Haptica/issues)
+- Want to contribute? → Submit a pull request
+
+---
+
+## 📰 Mentions
 
 - [Fresh Swift](http://freshswift.net/post/-kj8ocn5j9lt_ljpffm4/)
 
-## License
+---
 
-Haptica is available under the MIT license. See the LICENSE file for more info.
+## 📄 License
+
+Haptica is available under the MIT license. See the [LICENSE](./LICENSE) file for details.

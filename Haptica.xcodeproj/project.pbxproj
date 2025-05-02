@@ -18,6 +18,7 @@
 		8BA8FB0F1E9847DD00A3289A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA8FB0D1E9847DD00A3289A /* Main.storyboard */; };
 		8BA8FB111E9847DD00A3289A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA8FB101E9847DD00A3289A /* Assets.xcassets */; };
 		8BA8FB141E9847DD00A3289A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA8FB121E9847DD00A3289A /* LaunchScreen.storyboard */; };
+		F44231882DC4AB070043F069 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44231872DC4AB070043F069 /* Logs.swift */; };
 		F45D3AD421F184820062506D /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D3AD321F184820062506D /* Pattern.swift */; };
 		F4A237A5206F27A8001C0A9E /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = F4A237A2206F27A7001C0A9E /* CHANGELOG.md */; };
 		F4A237A6206F27A8001C0A9E /* Haptica.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F4A237A3206F27A7001C0A9E /* Haptica.podspec */; };
@@ -63,6 +64,7 @@
 		8BA8FB101E9847DD00A3289A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BA8FB131E9847DD00A3289A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BA8FB151E9847DD00A3289A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F44231872DC4AB070043F069 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		F45D3AD321F184820062506D /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		F4A237A2206F27A7001C0A9E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		F4A237A3206F27A7001C0A9E /* Haptica.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Haptica.podspec; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				8B4EAA711E9848B5003E919A /* Hapticable.swift */,
 				F4EA2A822125F8AF00B2F530 /* Extensions.swift */,
 				F45D3AD321F184820062506D /* Pattern.swift */,
+				F44231872DC4AB070043F069 /* Logs.swift */,
 				8BA8FAFC1E98479800A3289A /* Info.plist */,
 			);
 			name = Haptica;
@@ -262,6 +265,7 @@
 				F45D3AD421F184820062506D /* Pattern.swift in Sources */,
 				8B4EAA721E9848B5003E919A /* Associated.swift in Sources */,
 				8B4EAA741E9848B5003E919A /* Hapticable.swift in Sources */,
+				F44231882DC4AB070043F069 /* Logs.swift in Sources */,
 				F4EA2A832125F8AF00B2F530 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -414,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -438,7 +442,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 3.0.3;
+				MARKETING_VERSION = 4.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.efremidze.Haptica;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -458,7 +462,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 3.0.3;
+				MARKETING_VERSION = 4.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.efremidze.Haptica;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

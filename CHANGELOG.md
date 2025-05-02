@@ -1,5 +1,12 @@
 # Change log
 
+## [Version 4.0.0](https://github.com/efremidze/Haptica/releases/tag/4.0.0)
+Released on 2025-05-01
+
+- Added Core Haptics Support
+- Added File Support (playing AHAP files)
+- Dropped iOS 12 Support
+
 ## [Version 3.0.3](https://github.com/efremidze/Haptica/releases/tag/3.0.3)
 Released on 2021-10-15
 
