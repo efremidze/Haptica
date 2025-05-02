@@ -125,6 +125,45 @@ public extension Haptic {
     }
 }
 
+// MARK: - Haptic File API
+
+@available(iOS 16.0, *)
+public extension Haptic {
+    /// Play a Core Haptics pattern from a JSON file.
+    ///
+    /// - Parameters:
+    ///   - url: The file URL of the haptic pattern (e.g. bundled JSON file).
+    static func playPattern(from url: URL) {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        if engine == nil {
+            prepareHaptics()
+        }
+        
+        guard let engine else { return }
+
+        do {
+            let pattern = try CHHapticPattern(contentsOf: url)
+            let player = try engine.makePlayer(with: pattern)
+            try player.start(atTime: 0)
+        } catch {
+            HapticaLog.error("Failed to play haptic pattern from file: \(error)")
+        }
+    }
+    
+    /// Play a Core Haptics pattern from a JSON file in the main bundle.
+    ///
+    /// - Parameters:
+    ///   - named: Name of the pattern file without extension.
+    ///   - withExtension: Extension, usually \"ahap\" or \"json\".
+    static func playPattern(named: String, withExtension ext: String = "ahap") {
+        guard let url = Bundle.main.url(forResource: named, withExtension: ext) else {
+            return HapticaLog.error("Failed to locate haptic pattern file named \(named).\(ext)")
+        }
+        playPattern(from: url)
+    }
+}
+
 // MARK: - Notes
 
 /// A note in a Core Haptics pattern, representing either a haptic feedback or a wait.
