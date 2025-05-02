@@ -9,14 +9,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
-          
+
+      - name: Set up .netrc
+        run: |
+          echo "machine trunk.cocoapods.org" > ~/.netrc
+          echo "  login ${{ secrets.COCOAPODS_TRUNK_EMAIL }}" >> ~/.netrc
+          echo "  password ${{ secrets.COCOAPODS_TRUNK_TOKEN }}" >> ~/.netrc
+          chmod 600 ~/.netrc
+
       - name: Run Fastlane release
         run: bundle exec fastlane release
-        env:
-          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
