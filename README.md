@@ -66,6 +66,15 @@ Or play a symphony of notes:
 Haptic.play([.haptic(.impact(.light)), .haptic(.impact(.heavy)), .wait(0.1), .haptic(.impact(.heavy)), .haptic(.impact(.light))])
 ```
 
+#### Core Haptics
+
+With the introduction of Core Haptics, Haptica has migrated to use te new API. If you would like to use the legacy API, pass the lagacy parameter to play.
+
+```swift
+let notes = [.haptic(.impact(.light)), .haptic(.impact(.heavy)), .wait(0.1), .haptic(.impact(.heavy)), .haptic(.impact(.light))]
+Haptic.play(notes, legacy: true)
+```
+
 ### UIButton Extension
 
 To enable haptic feedback on buttons, set these properties:
@@ -136,12 +145,6 @@ To install with [Carthage](https://github.com/Carthage/Carthage), simply add thi
 ```ruby
 github "efremidze/Haptica"
 ```
-
-// For projects that support iOS 9
-.package(url: "https://example.com/your-package", from: "1.0.0")
-
-// For projects that support iOS 13+
-.package(url: "https://example.com/your-package", from: "2.0.0")
 
 ## Communication
 
