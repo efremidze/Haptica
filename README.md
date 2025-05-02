@@ -108,6 +108,22 @@ Peep.play(sound: KeyPress.tap)
 
 ## Installation
 
+### Swift Package Manager
+
+To install with [Swift Package Manager](https://swift.org/package-manager/), simply add this package:
+
+```swift
+// For projects that support iOS 13+
+dependencies: [
+    .package(url: "https://github.com/efremidze/Haptica.git", from: "4.0.0")
+]
+
+// For projects that support iOS 9
+dependencies: [
+    .package(url: "https://github.com/efremidze/Haptica.git", from: "3.0.0")
+]
+```
+
 ### CocoaPods
 To install with [CocoaPods](http://cocoapods.org/), simply add this in your `Podfile`:
 ```ruby
@@ -120,6 +136,12 @@ To install with [Carthage](https://github.com/Carthage/Carthage), simply add thi
 ```ruby
 github "efremidze/Haptica"
 ```
+
+// For projects that support iOS 9
+.package(url: "https://example.com/your-package", from: "1.0.0")
+
+// For projects that support iOS 13+
+.package(url: "https://example.com/your-package", from: "2.0.0")
 
 ## Communication
 
