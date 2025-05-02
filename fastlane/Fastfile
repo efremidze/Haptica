@@ -1,0 +1,21 @@
+desc "Release a new CocoaPods version"
+lane :release do
+  version = increment_version_number(bump_type: "patch", xcodeproj: nil) # or manually parse podspec
+
+  commit_message = "Release version #{version}"
+  sh "sed -i '' \"s/s.version = .*/s.version = '#{version}'/\" Haptica.podspec"
+
+  git_commit(path: ".", message: commit_message)
+  add_git_tag(tag: version)
+  push_to_git_remote
+
+  push_to_cocoapods(allow_warnings: true)
+
+  # Optional:
+  # changelog = changelog_from_git_commits
+  # github_release(
+  #   tag_name: version,
+  #   name: "Haptica #{version}",
+  #   description: changelog
+  # )
+end
