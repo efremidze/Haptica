@@ -159,6 +159,29 @@ public enum Note {
     }
 }
 
+public extension Haptic {
+    var hapticNote: Note? {
+        switch self {
+        case .start:
+            return .haptic(0.6, 0.6)
+        case .stop:
+            return .haptic(0.9, 0.8)
+        case .increase:
+            return .haptic(0.5, 0.4)
+        case .decrease:
+            return .haptic(0.3, 0.3)
+        case .success:
+            return .haptic(1.0, 0.7)
+        case .failure:
+            return .haptic(0.9, 0.5)
+        case .warning:
+            return .haptic(0.9, 1.0)
+        default:
+            return nil // handled elsewhere
+        }
+    }
+}
+
 /// A note in the legacy haptic pattern system, using UIKit feedback types.
 public enum LegacyNote {
     case haptic(Haptic)
