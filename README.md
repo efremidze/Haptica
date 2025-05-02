@@ -44,12 +44,27 @@ Haptic.impact(.light).generate()
 
 ### Feedback Types
 
-- **Impact** (`.light`, `.medium`, `.heavy`)  
+- **Impact** (`.light`, `.medium`, `.heavy`, `.soft`, `.rigid`)  
   Use to indicate collision or snap-to-position.
 - **Notification** (`.success`, `.warning`, `.error`)  
   Use to communicate task results.
 - **Selection**  
   Use for navigation through discrete values.
+
+### Semantic Types (New)
+
+Use new expressive variants for common interactions:
+
+```swift
+Haptic.success.generate()
+Haptic.warning.generate()
+Haptic.start.generate()
+Haptic.stop.generate()
+Haptic.increase.generate()
+Haptic.decrease.generate()
+```
+
+These semantic styles internally map to appropriate UIKit or Core Haptics-based effects.
 
 ### Custom Vibration Patterns
 
