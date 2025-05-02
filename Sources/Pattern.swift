@@ -8,6 +8,8 @@
 
 import CoreHaptics
 
+// MARK: - Haptic Pattern API
+
 public extension Haptic {
     static func play(_ pattern: String, delay: TimeInterval, legacy: Bool = false) {
         if legacy {
@@ -20,78 +22,7 @@ public extension Haptic {
     }
 }
 
-public extension Haptic {
-    static let queue: OperationQueue = .serial
-    
-    static func play(_ notes: [LegacyNote]) {
-        guard queue.operations.isEmpty else { return }
-        
-        for note in notes {
-            let operation = note.operation
-            if let last = queue.operations.last {
-                operation.addDependency(last)
-            }
-            queue.addOperation(operation)
-        }
-    }
-}
-
-public enum LegacyNote {
-    case haptic(Haptic)
-    case wait(TimeInterval)
-    
-    init?(_ char: Character, delay: TimeInterval) {
-        switch String(char) {
-        case "O":
-            self = .haptic(.impact(.heavy))
-        case "o":
-            self = .haptic(.impact(.medium))
-        case ".":
-            self = .haptic(.impact(.light))
-        case "X":
-            self = .haptic(.impact(.rigid))
-        case "x":
-            self = .haptic(.impact(.soft))
-        case "-":
-            self = .wait(delay)
-        default:
-            return nil
-        }
-    }
-    
-    var operation: Operation {
-        switch self {
-        case .haptic(let haptic):
-            return HapticOperation(haptic)
-        case .wait(let interval):
-            return WaitOperation(interval)
-        }
-    }
-}
-
-class HapticOperation: Operation, @unchecked Sendable {
-    let haptic: Haptic
-    init(_ haptic: Haptic) {
-        self.haptic = haptic
-    }
-    override func main() {
-        DispatchQueue.main.sync {
-            self.haptic.generate()
-        }
-    }
-}
-
-class WaitOperation: Operation, @unchecked Sendable {
-    let duration: TimeInterval
-    init(_ duration: TimeInterval) {
-        self.duration = duration
-    }
-    override func main() {
-        Thread.sleep(forTimeInterval: duration)
-    }
-}
-
-import CoreHaptics
+// MARK: - Core Haptics Engine
 
 public extension Haptic {
     static var engine: CHHapticEngine?
@@ -103,21 +34,15 @@ public extension Haptic {
             engine = try CHHapticEngine()
             try engine?.start()
             
-            // The engine stops automatically when it goes into the background
-            engine?.stoppedHandler = { reason in
-                print("Haptic engine stopped: \(reason)")
-            }
-            
             engine?.resetHandler = {
-                print("Haptic engine reset")
                 do {
                     try engine?.start()
                 } catch {
-                    print("Failed to restart engine: \(error)")
+                    HapticaLog.error("Failed to restart engine: \(error)")
                 }
             }
         } catch {
-            print("Failed to create haptic engine: \(error)")
+            HapticaLog.error("Failed to create haptic engine: \(error)")
         }
     }
     
@@ -161,11 +86,32 @@ public extension Haptic {
             let player = try engine.makePlayer(with: pattern)
             try player.start(atTime: 0)
         } catch {
-            print("Failed to play pattern: \(error)")
+            HapticaLog.error("Failed to play pattern: \(error)")
         }
     }
 }
 
+// MARK: - Legacy Engine
+
+public extension Haptic {
+    static let queue: OperationQueue = .serial
+    
+    static func play(_ notes: [LegacyNote]) {
+        guard queue.operations.isEmpty else { return }
+        
+        for note in notes {
+            let operation = note.operation
+            if let last = queue.operations.last {
+                operation.addDependency(last)
+            }
+            queue.addOperation(operation)
+        }
+    }
+}
+
+// MARK: - Notes
+
+/// TODO
 public enum Note {
     case haptic(Float, Float) // intensity, sharpness
     case wait(TimeInterval)
@@ -187,5 +133,56 @@ public enum Note {
         default:
             return nil
         }
+    }
+}
+
+/// TODO
+public enum LegacyNote {
+    case haptic(Haptic)
+    case wait(TimeInterval)
+    
+    init?(_ char: Character, delay: TimeInterval) {
+        switch char {
+        case "O": self = .haptic(.impact(.heavy))
+        case "o": self = .haptic(.impact(.medium))
+        case ".": self = .haptic(.impact(.light))
+        case "X": self = .haptic(.impact(.rigid))
+        case "x": self = .haptic(.impact(.soft))
+        case "-": self = .wait(delay)
+        default: return nil
+        }
+    }
+    
+    var operation: Operation {
+        switch self {
+        case .haptic(let haptic):
+            return HapticOperation(haptic)
+        case .wait(let interval):
+            return WaitOperation(interval)
+        }
+    }
+}
+
+// MARK: - Operation Wrappers
+
+class HapticOperation: Operation, @unchecked Sendable {
+    let haptic: Haptic
+    init(_ haptic: Haptic) {
+        self.haptic = haptic
+    }
+    override func main() {
+        DispatchQueue.main.sync {
+            self.haptic.generate()
+        }
+    }
+}
+
+class WaitOperation: Operation, @unchecked Sendable {
+    let duration: TimeInterval
+    init(_ duration: TimeInterval) {
+        self.duration = duration
+    }
+    override func main() {
+        Thread.sleep(forTimeInterval: duration)
     }
 }
