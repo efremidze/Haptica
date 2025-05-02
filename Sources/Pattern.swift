@@ -177,7 +177,7 @@ public extension Haptic {
         case .warning:
             return .haptic(0.9, 1.0)
         default:
-            return nil // handled elsewhere
+            return nil
         }
     }
 }
