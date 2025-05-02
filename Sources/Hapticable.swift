@@ -12,7 +12,7 @@ private var hapticKey: Void?
 private var eventKey: Void?
 private var targetsKey: Void?
 
-public protocol Hapticable: class {
+public protocol Hapticable: AnyObject {
     func trigger(_ sender: Any)
 }
 

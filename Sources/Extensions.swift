@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIControl.Event: Hashable {
+extension UIControl.Event: @retroactive Hashable {
     public var hashValue: Int {
         return Int(rawValue)
     }
