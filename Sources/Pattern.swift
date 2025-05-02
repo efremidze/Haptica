@@ -129,10 +129,10 @@ public extension Haptic {
 
 @available(iOS 16.0, *)
 public extension Haptic {
-    /// Play a Core Haptics pattern from a JSON file.
+    /// Play a Core Haptics pattern from an AHAP file.
     ///
     /// - Parameters:
-    ///   - url: The file URL of the haptic pattern (e.g. bundled JSON file).
+    ///   - url: The file URL of the haptic pattern (e.g. bundled AHAP file).
     static func playPattern(from url: URL) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
@@ -151,11 +151,13 @@ public extension Haptic {
         }
     }
     
-    /// Play a Core Haptics pattern from a JSON file in the main bundle.
+    /// Play a Core Haptics pattern from a JSON-based `.ahap` file included in the app bundle.
     ///
     /// - Parameters:
-    ///   - named: Name of the pattern file without extension.
-    ///   - withExtension: Extension, usually \"ahap\" or \"json\".
+    ///   - named: The name of the haptic pattern file without extension.
+    ///   - withExtension: The file extension, typically "ahap". Must contain valid AHAP JSON structure.
+    ///
+    /// The file must follow Apple's AHAP format. See: https://developer.apple.com/documentation/corehaptics/creating-custom-haptic-patterns
     static func playPattern(named: String, withExtension ext: String = "ahap") {
         guard let url = Bundle.main.url(forResource: named, withExtension: ext) else {
             return HapticaLog.error("Failed to locate haptic pattern file named \(named).\(ext)")
