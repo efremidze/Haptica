@@ -11,6 +11,12 @@ import CoreHaptics
 // MARK: - Haptic Pattern API
 
 public extension Haptic {
+    /// Generates a sequence of haptic events from a symbolic string pattern.
+    ///
+    /// - Parameters:
+    ///   - pattern: A string representing haptic feedback (e.g., `"..oO-Oo.."`)
+    ///   - delay: The delay used between pattern symbols like `-`
+    ///   - legacy: Whether to use legacy (UIKit) haptics instead of Core Haptics
     static func play(_ pattern: String, delay: TimeInterval, legacy: Bool = false) {
         if legacy {
             let notes = pattern.compactMap { LegacyNote($0, delay: delay) }
@@ -25,8 +31,11 @@ public extension Haptic {
 // MARK: - Core Haptics Engine
 
 public extension Haptic {
+    /// The shared Core Haptics engine instance used by the framework.
     static var engine: CHHapticEngine?
     
+    /// Prepares and starts the Core Haptics engine.
+    /// Sets up handlers to automatically restart the engine on reset or failure.
     static func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
@@ -46,6 +55,9 @@ public extension Haptic {
         }
     }
     
+    /// Plays a sequence of haptic notes using Core Haptics.
+    ///
+    /// - Parameter notes: An array of `Note` values that represent haptic and wait commands.
     static func play(_ notes: [Note]) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
@@ -94,8 +106,12 @@ public extension Haptic {
 // MARK: - Legacy Engine
 
 public extension Haptic {
+    /// A serial queue used to sequence legacy haptic operations.
     static let queue: OperationQueue = .serial
     
+    /// Plays a series of `LegacyNote` values using UIKit-based feedback generators.
+    ///
+    /// - Parameter notes: An array of legacy haptic notes.
     static func play(_ notes: [LegacyNote]) {
         guard queue.operations.isEmpty else { return }
         
@@ -111,11 +127,18 @@ public extension Haptic {
 
 // MARK: - Notes
 
-/// TODO
+/// A note in a Core Haptics pattern, representing either a haptic feedback or a wait.
+///
+/// `Note` is constructed from symbolic characters to support pattern string parsing.
 public enum Note {
     case haptic(Float, Float) // intensity, sharpness
     case wait(TimeInterval)
     
+    /// Initializes a `Note` from a pattern character and delay.
+    ///
+    /// - Parameters:
+    ///   - char: A character representing a feedback type.
+    ///   - delay: The duration to wait for wait notes (e.g. `-`).
     init?(_ char: Character, delay: TimeInterval) {
         switch String(char) {
         case "O":
@@ -136,11 +159,16 @@ public enum Note {
     }
 }
 
-/// TODO
+/// A note in the legacy haptic pattern system, using UIKit feedback types.
 public enum LegacyNote {
     case haptic(Haptic)
     case wait(TimeInterval)
     
+    /// Initializes a `LegacyNote` from a pattern character and delay.
+    ///
+    /// - Parameters:
+    ///   - char: A character representing a feedback type.
+    ///   - delay: The duration to wait for wait notes (e.g. `-`).
     init?(_ char: Character, delay: TimeInterval) {
         switch char {
         case "O": self = .haptic(.impact(.heavy))
@@ -153,6 +181,7 @@ public enum LegacyNote {
         }
     }
     
+    /// Converts the `LegacyNote` into a queued operation.
     var operation: Operation {
         switch self {
         case .haptic(let haptic):
@@ -165,6 +194,7 @@ public enum LegacyNote {
 
 // MARK: - Operation Wrappers
 
+/// An `Operation` that triggers a UIKit-based haptic feedback when executed.
 class HapticOperation: Operation, @unchecked Sendable {
     let haptic: Haptic
     init(_ haptic: Haptic) {
@@ -177,6 +207,7 @@ class HapticOperation: Operation, @unchecked Sendable {
     }
 }
 
+/// An `Operation` that waits (sleeps) for a specified time when executed.
 class WaitOperation: Operation, @unchecked Sendable {
     let duration: TimeInterval
     init(_ duration: TimeInterval) {
