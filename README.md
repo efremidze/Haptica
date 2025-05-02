@@ -95,11 +95,21 @@ Haptic.play([
 
 ### 🔧 Core Haptics Support
 
-Haptica uses **Core Haptics** by default. To use the legacy API:
+Haptica uses **Core Haptics** by default when available. To use the legacy API:
 
 ```swift
 Haptic.play(notes, legacy: true)
 ```
+
+### 📂 Play from Pattern File (New) - iOS 16+
+
+Play a Core Haptics pattern from a bundled `.ahap` file:
+
+```swift
+Haptic.playPattern(named: "Feedback")
+```
+
+Make sure the file is included in your app bundle and contains a valid haptic pattern.
 
 ---
 
