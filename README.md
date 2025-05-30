@@ -1,11 +1,11 @@
 ![Haptica](https://raw.githubusercontent.com/efremidze/Haptica/master/Images/logo.png)
 
-[![Build Status](https://travis-ci.org/efremidze/Haptica.svg?branch=master)](https://travis-ci.org/efremidze/Haptica)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Language](https://img.shields.io/badge/Swift-5-orange.svg?style=flat)](https://swift.org)
-[![Version](https://img.shields.io/cocoapods/v/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
-[![License](https://img.shields.io/cocoapods/l/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
-[![Platform](https://img.shields.io/cocoapods/p/Haptica.svg?style=flat)](http://cocoapods.org/pods/Haptica)
+[![CI](https://github.com/efremidze/Haptica/actions/workflows/ci.yml/badge.svg)](https://github.com/efremidze/Haptica/actions/workflows/ci.yml)
+[![CocoaPods](https://img.shields.io/cocoapods/v/Haptica.svg)](https://cocoapods.org/pods/Haptica)
+[![Carthage](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
+[![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![Swift](https://img.shields.io/badge/Swift-5.9+-orange.svg)](https://swift.org)
+[![License](https://img.shields.io/github/license/efremidze/Haptica.svg)](https://github.com/efremidze/Haptica/blob/master/LICENSE)
 
 # Haptica
 
